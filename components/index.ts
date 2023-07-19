@@ -1,4 +1,6 @@
-import Hero from "@/rootComp/Hero";
 import CustomButton from "@/rootComp/CustomButton";
+import Footer from "@/rootComp/Footer";
+import Hero from "@/rootComp/Hero";
+import Navbar from "@/rootComp/Navbar";
 
-export { Hero, CustomButton };
+export { CustomButton, Footer, Hero, Navbar };
