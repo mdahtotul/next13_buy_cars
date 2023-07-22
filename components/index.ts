@@ -5,6 +5,7 @@ import Hero from "@/rootComp/Hero";
 import Navbar from "@/rootComp/Navbar";
 import SearchBar from "@/rootComp/SearchBar";
 import SearchManufacturer from "@/rootComp/SearchManufacturer";
+import CarCard from "@/rootComp/CarCard";
 
 export {
   CustomButton,
@@ -14,4 +15,5 @@ export {
   Navbar,
   SearchBar,
   SearchManufacturer,
+  CarCard,
 };

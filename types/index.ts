@@ -1,4 +1,4 @@
-import React, { MouseEventHandler } from "react";
+import { MouseEventHandler } from "react";
 
 export interface CustomButtonProps {
   title: string;
@@ -15,4 +15,8 @@ export interface SearchManufacturerProps {
 
 export interface CustomFilterProps {
   title: string;
+}
+
+export interface CarCardProps {
+  car: Record<string, any> | null;
 }

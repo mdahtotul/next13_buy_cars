@@ -1,6 +1,10 @@
-import { CustomFilter, Hero, SearchBar } from "@/components";
+import { CustomFilter, Hero, SearchBar, CarCard } from "@/components";
+import { fetchCars } from "@/utils";
+import { isValidArray } from "@/utils/common";
 
-export default function Home() {
+export default async function Home() {
+  const allCars = await fetchCars(); // fetching data on server side
+
   return (
     <main className="overflow-hidden">
       <Hero />
@@ -20,6 +24,21 @@ export default function Home() {
             <CustomFilter title="year" />
           </div>
         </div>
+
+        {isValidArray(allCars) ? (
+          <section>
+            <div className="home_cars-wrapper">
+              {allCars?.map((car: any, i: number) => (
+                <CarCard car={car} key={i} />
+              ))}
+            </div>
+          </section>
+        ) : (
+          <div className="home_error_container">
+            <h2 className="text-black text-xl font-bold">Oops, no results</h2>
+            <p>{allCars?.error}</p>
+          </div>
+        )}
       </div>
     </main>
   );
