@@ -7,8 +7,8 @@ const options = {
   url: "https://cars-by-api-ninjas.p.rapidapi.com/v1/cars",
   // params: { model: "q3" },
   headers: {
-    "X-RapidAPI-Key": "ec63769b27msh93ced49d8ba141dp1abe0fjsnfb7cf1811f1f",
-    "X-RapidAPI-Host": "cars-by-api-ninjas.p.rapidapi.com",
+    "X-RapidAPI-Key": process.env.NEXT_PUBLIC_RAPID_API_KEY || "",
+    "X-RapidAPI-Host": process.env.NEXT_PUBLIC_RAPID_API_HOST || "",
   },
 };
 
@@ -25,7 +25,6 @@ export async function fetchCars(filters: FilterProps) {
       },
     });
     const allCars = await response.data;
-    console.log("🚀 ~ file: index.ts:28 ~ fetchCars ~ allCars:", allCars);
     return allCars;
   } catch (err: any) {
     console.error("🚀 ~ file: index.ts:20 ~ fetchCars ~ err:", err);
