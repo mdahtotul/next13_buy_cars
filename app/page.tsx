@@ -1,15 +1,17 @@
-import { CustomFilter, Hero, SearchBar, CarCard } from "@/components";
+import { CarCard, CustomFilter, Hero, SearchBar, ShowMore } from "@/components";
+import { fuels, yearsOfProduction } from "@/constants";
 import { fetchCars } from "@/utils";
 import { isValidArray } from "@/utils/common";
 
 export default async function Home({ searchParams }: any) {
+  // fetching data on server side
   const allCars = await fetchCars({
     manufacturer: searchParams?.manufacturer || "",
     model: searchParams?.model || "",
     fuel: searchParams?.fuel || "",
     year: searchParams?.year || 2022,
     limit: searchParams?.limit || 10,
-  }); // fetching data on server side
+  });
 
   return (
     <main className="overflow-hidden">
@@ -26,18 +28,22 @@ export default async function Home({ searchParams }: any) {
           <SearchBar />
 
           <div className="home__filter-container">
-            <CustomFilter title="fuel" />
-            <CustomFilter title="year" />
+            <CustomFilter title="fuel" options={fuels} />
+            <CustomFilter title="year" options={yearsOfProduction} />
           </div>
         </div>
 
         {isValidArray(allCars) ? (
           <section>
-            <div className="home_cars-wrapper">
+            <div className="home__cars-wrapper">
               {allCars?.map((car: any, i: number) => (
                 <CarCard car={car} key={i} />
               ))}
             </div>
+            <ShowMore
+              pageNumber={(searchParams?.limit || 10) / 10}
+              isNext={(searchParams.limit || 10) > allCars.length}
+            />
           </section>
         ) : (
           <div className="home_error_container">

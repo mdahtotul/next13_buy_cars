@@ -17,6 +17,13 @@ export interface SearchManufacturerProps {
 
 export interface CustomFilterProps {
   title: string;
+  options: OptionsProps[];
+  // options: Record<string, string>;
+}
+
+export interface OptionsProps {
+  title: string;
+  value: string;
 }
 
 export interface CarProps {
@@ -40,4 +47,9 @@ export interface FilterProps {
   fuel: string;
   year: number;
   limit: number;
+}
+
+export interface ShowMoreProps {
+  pageNumber: number;
+  isNext: boolean;
 }
