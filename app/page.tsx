@@ -2,8 +2,14 @@ import { CustomFilter, Hero, SearchBar, CarCard } from "@/components";
 import { fetchCars } from "@/utils";
 import { isValidArray } from "@/utils/common";
 
-export default async function Home() {
-  const allCars = await fetchCars(); // fetching data on server side
+export default async function Home({ searchParams }: any) {
+  const allCars = await fetchCars({
+    manufacturer: searchParams?.manufacturer || "",
+    model: searchParams?.model || "",
+    fuel: searchParams?.fuel || "",
+    year: searchParams?.year || 2022,
+    limit: searchParams?.limit || 10,
+  }); // fetching data on server side
 
   return (
     <main className="overflow-hidden">
