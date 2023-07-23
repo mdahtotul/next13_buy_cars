@@ -6,6 +6,7 @@ import Navbar from "@/rootComp/Navbar";
 import SearchBar from "@/rootComp/SearchBar";
 import SearchManufacturer from "@/rootComp/SearchManufacturer";
 import CarCard from "@/rootComp/CarCard";
+import CarDetails from "@/rootComp/CarDetails";
 
 export {
   CustomButton,
@@ -16,4 +17,5 @@ export {
   SearchBar,
   SearchManufacturer,
   CarCard,
+  CarDetails,
 };
